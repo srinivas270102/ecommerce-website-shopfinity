@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flipkart-like e-commerce website with products across multiple categories">
+    <meta name="keywords" content="e-commerce, online shopping, Flipkart, mobiles, laptops, clothing">
+    <title>FlipMart - Online Shopping</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Flip<span class="yellow">Mart</span></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories</a>
+                        <div class="dropdown-content">
+                            <a href="#" data-category="mobiles">Mobiles</a>
+                            <a href="#" data-category="laptops">Laptops</a>
+                            <a href="#" data-category="clothing">Clothing</a>
+                            <a href="#" data-category="home_appliances">Home Appliances</a>
+                            <a href="#" data-category="groceries">Groceries</a>
+                            <a href="#" data-category="books">Books</a>
+                            <a href="#" data-category="beauty">Beauty & Personal Care</a>
+                            <a href="#" data-category="sports">Sports & Fitness</a>
+                        </div>
+                    </li>
+                    <li><a href="#" id="deals-link">Deals of the Day</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="#" id="cart-toggle">
+                    <span class="cart-count">0</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Banner -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Great Shopping Experience</h2>
+                    <p>Discover amazing products at unbeatable prices</p>
+                    <button class="btn">Shop Now</button>
+                </div>
+            </section>
+
+            <!-- Deals of the Day -->
+            <section class="deals-section">
+                <h2 class="section-title">Deals of the Day</h2>
+                <div class="deals-container" id="deals-container">
+                    <!-- Deals will be loaded here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Category Filters -->
+            <section class="category-filters">
+                <h2 class="section-title">Shop by Category</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All Products</button>
+                    <button class="filter-btn" data-category="mobiles">Mobiles</button>
+                    <button class="filter-btn" data-category="laptops">Laptops</button>
+                    <button class="filter-btn" data-category="clothing">Clothing</button>
+                    <button class="filter-btn" data-category="home_appliances">Home Appliances</button>
+                    <button class="filter-btn" data-category="groceries">Groceries</button>
+                    <button class="filter-btn" data-category="books">Books</button>
+                    <button class="filter-btn" data-category="beauty">Beauty</button>
+                    <button class="filter-btn" data-category="sports">Sports</button>
+                </div>
+            </section>
+
+            <!-- Product Grid -->
+            <section class="product-section">
+                <h2 class="section-title">Our Products</h2>
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be loaded here by JavaScript -->
+        </div>
+        <div class="cart-total">
+            <h4>Total: <span id="cart-total-amount">$0.00</span></h4>
+        </div>
+        <button class="btn checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                    <span class="error-message" id="address-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="payment">Payment Method</label>
+                    <select id="payment" name="payment" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="upi">UPI</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                    <span class="error-message" id="payment-error"></span>
+                </div>
+                <button type="submit" class="btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="confirmation-modal" id="confirmation-modal">
+        <div class="modal-content">
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for your purchase. Your order has been placed successfully.</p>
+            <p>Order ID: <span id="order-id"></span></p>
+            <button class="btn" id="close-confirmation">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>FlipMart is your one-stop shop for all your needs. We offer a wide range of products at competitive prices.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Deals</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@flipmart.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FlipMart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
